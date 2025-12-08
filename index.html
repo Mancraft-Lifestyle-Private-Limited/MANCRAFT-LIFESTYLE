@@ -7,56 +7,77 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    body {
       font-family: "Poppins", sans-serif;
       background: linear-gradient(to bottom right, #eef2f7, #d9e2ec);
       color: #333;
+      line-height: 1.6;
     }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 40px;
-      background: #ffffffdd; /* translucent white */
+      background: #ffffffdd;
       backdrop-filter: blur(6px);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    header .logo-group {
+    .logo-group {
       display: flex;
       align-items: center;
       gap: 15px;
     }
-    header .logo-group img {
+    .logo-group img {
       height: 50px;
-      width: auto;
       object-fit: contain;
       border-radius: 8px;
     }
-    header .logo-group span {
+    .logo-group span {
       font-size: 22px;
       font-weight: 600;
       color: #2c3e50;
       letter-spacing: 1px;
     }
-    header nav {
-      /* placeholder for nav menu */
+    nav a {
+      margin-left: 25px;
+      font-weight: 500;
+      color: #2c3e50;
+      transition: color 0.3s;
     }
+    nav a:hover {
+      color: #0077cc;
+    }
+
+    /* Sections */
     .section {
       width: 92%;
       max-width: 1200px;
       margin: auto;
-      padding: 50px 0;
+      padding: 80px 0;
     }
     h2 {
       text-align: center;
-      font-size: 30px;
-      margin-bottom: 30px;
+      font-size: 32px;
+      margin-bottom: 40px;
       color: #2c3e50;
     }
+
+    /* Product Gallery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -88,63 +109,124 @@
     .product p {
       font-size: 14px;
       color: #555;
-      line-height: 1.6;
     }
+
+    /* Info Boxes */
     .info-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
       background: #ffffffcc;
       backdrop-filter: blur(4px);
-      padding: 30px;
+      padding: 25px 30px;
       border-radius: 18px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.1);
       margin: 20px auto;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .info-box h3 {
+    .info-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .info-box img.icon {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-top: 5px;
+    }
+    .info-box-content h3 {
       font-size: 22px;
       margin-bottom: 10px;
       color: #2c3e50;
     }
-    .info-box p {
+    .info-box-content p {
       color: #666;
       font-size: 15px;
     }
+
+    /* Contact Section */
+    .contact .info-box {
+      flex-direction: column;
+      text-align: left;
+    }
+    .contact .info-box h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
     .contact p {
-      font-size: 15px;
       margin: 8px 0;
-      line-height: 1.6;
+      font-size: 15px;
     }
     .contact strong {
       color: #2c3e50;
       font-weight: 600;
     }
+
+    /* Footer */
     footer {
       background: #1c1c1c;
       color: #ccc;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
+      padding: 30px;
       font-size: 14px;
+    }
+    footer a {
+      color: #ccc;
+      margin: 0 5px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #0077cc;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive Tweaks */
+    @media(max-width: 600px) {
+      .logo-group span {
+        font-size: 18px;
+      }
+      .info-box {
+        flex-direction: column;
+        text-align: center;
+      }
+      .info-box img.icon {
+        margin: 0 auto 10px;
+      }
+      nav a {
+        margin-left: 15px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="logo-group">
       <img src="img/logo.png" alt="Mancraft Logo" />
       <span>MANCRAFT LIFE STYLE PRIVATE LIMITED</span>
     </div>
     <nav>
-      <!-- You can add navigation links here if you like -->
+      <a href="#products">Products</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#about">About Us</a>
     </nav>
   </header>
 
   <!-- PRODUCT GALLERY -->
-  <div class="section">
+  <div class="section" id="products">
     <h2>Our Products</h2>
     <div class="gallery">
       <div class="product">
         <img src="img/img-01.jpg" alt="Cobas C311" />
         <h3>Cobas C311</h3>
-        <p>A high-performance automated clinical chemistry analyzer designed for medium to high-throughput labs. It ensures quick, accurate biochemical testing with seamless integration & automated workflow handling.</p>
+        <p>A high-performance automated clinical chemistry analyzer designed for medium to high-throughput labs. Quick, accurate biochemical testing with automated workflow.</p>
       </div>
       <div class="product">
         <img src="img/img-02.jpg" alt="Cobas E411" />
@@ -160,37 +242,35 @@
   </div>
 
   <!-- ADDITIONAL INFORMATION -->
-<div class="section">
+  <div class="section" id="about">
+    <h2>Leading Services</h2>
+    <div class="info-box">
+      <img src="img/warranty.png" class="icon" alt="Warranty Icon">
+      <div class="info-box-content">
+        <h3>Warranty</h3>
+        <p>Register your product and check complete warranty coverage details.</p>
+      </div>
+    </div>
 
+    <div class="info-box">
+      <img src="img/support.png" class="icon" alt="Support Icon">
+      <div class="info-box-content">
+        <h3>Face-to-Face Support</h3>
+        <p>Get reliable service from our certified support centers across the region.</p>
+      </div>
+    </div>
 
-<div class="info-box">
-<img src="img/icons/warranty.png" class="icon" alt="Warranty Icon">
-<div class="info-box-content">
-<h3>Warranty</h3>
-<p>Register your product and check complete warranty coverage details.</p>
-</div>
-</div>
-
-
-<div class="info-box">
-<img src="img/icons/support.png" class="icon" alt="Support Icon">
-<div class="info-box-content">
-<h3>Face-to-Face Support</h3>
-<p>Get reliable service from our certified support centers across the region.</p>
-</div>
-</div>
-
-
-<div class="info-box">
-<img src="img/icons/news.png" class="icon" alt="News Icon">
-<div class="info-box-content">
-<h3>News & Alerts</h3>
-<p>Stay updated with product launches, offers, and important announcements.</p>
-</div>
-</div>
+    <div class="info-box">
+      <img src="img/news.png" class="icon" alt="News Icon">
+      <div class="info-box-content">
+        <h3>News & Alerts</h3>
+        <p>Stay updated with product launches, offers, and important announcements.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- CONTACT US -->
-  <div class="section contact">
+  <div class="section contact" id="contact">
     <div class="info-box">
       <h2>Contact Us</h2>
       <p><strong>📍 Address:</strong><br>16/1A, Abdul Hamid Street, 3rd Floor, Room No. 3F, Kolkata - 700069, West Bengal, India</p>
@@ -200,8 +280,14 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer>
-    © 2025 Mancraft Lifestyle. All Rights Reserved.
+    © 2025 Mancraft Lifestyle. All Rights Reserved.<br>
+    Follow us: 
+    <a href="#">Facebook</a> |
+    <a href="#">LinkedIn</a> |
+    <a href="#">Instagram</a>
   </footer>
+
 </body>
 </html>
