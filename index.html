@@ -16,31 +16,59 @@
     .container{width:94%;max-width:1200px;margin:0 auto}
 
     /* Header */
-    header{position:sticky;top:12px;z-index:1200;padding:14px;backdrop-filter:blur(8px);background:rgba(255,255,255,0.55);border-radius:14px;box-shadow:0 8px 30px rgba(20,30,50,0.06);display:flex;align-items:center;justify-content:space-between;gap:20px}
+    header{position:sticky;top:12px;z-index:1200;padding:14px;backdrop-filter:blur(12px);background:rgba(255,255,255,0.7);border-radius:14px;box-shadow:0 8px 30px rgba(20,30,50,0.06);display:flex;align-items:center;justify-content:space-between;gap:20px; border:1px solid rgba(255,255,255,0.6)}
     .logo{display:flex;align-items:center;gap:12px}
     .logo img{height:48px;width:48px;border-radius:10px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
     .logo .title{font-weight:700;color:#0b2545;letter-spacing:0.6px}
 
     nav.desktop{display:flex;gap:20px;align-items:center}
-    nav.desktop a{padding:8px 12px;border-radius:10px;font-weight:600;color:#0b2545;transition:all .25s}
+    nav.desktop a{padding:8px 12px;border-radius:10px;font-weight:600;color:#0b2545;transition:all .25s;text-decoration:none}
     nav.desktop a:hover{background:linear-gradient(90deg,rgba(0,119,204,0.12),rgba(0,119,204,0.06));color:#0077cc}
 
     /* Accent button */
-    .btn-primary{background:linear-gradient(90deg,#0077cc,#00a3ff);color:white;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:0 8px 24px rgba(0,123,204,0.18);border:none}
+    .btn-primary{background:linear-gradient(90deg,#0077cc,#00a3ff);color:white;padding:12px 24px;border-radius:12px;font-weight:700;box-shadow:0 8px 24px rgba(0,123,204,0.25);border:none;text-decoration:none;display:inline-block;transition:transform 0.2s, box-shadow 0.2s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,123,204,0.4)}
+
+    .btn-secondary{background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);color:#fff;padding:12px 24px;border-radius:12px;font-weight:600;border:1px solid rgba(255,255,255,0.2);text-decoration:none;display:inline-block;transition:background 0.2s}
+    .btn-secondary:hover{background:rgba(255,255,255,0.2)}
 
     /* Hamburger */
     .hamburger{display:none;background:none;border:0;padding:8px;border-radius:8px}
     .hamburger .bar{display:block;width:26px;height:2px;background:#0b2545;margin:5px 0;border-radius:2px;transition:all .3s}
 
-    /* Hero */
-    .hero{margin-top:30px;border-radius:16px;overflow:hidden;position:relative;background:#123;box-shadow:0 18px 40px rgba(10,20,40,0.12)}
-    .hero__bg{background-image:url('https://images.unsplash.com/photo-1581091870622-3c9f6d1b9f6b?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;height:420px;filter:contrast(1.02) saturate(1.05)}
-    .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,23,40,0.25),rgba(6,23,40,0.45));backdrop-filter:blur(3px)}
-    .hero__content{position:absolute;left:40px;top:50%;transform:translateY(-50%);color:#fff;max-width:620px}
-    .hero__kicker{display:inline-block;background:rgba(255,255,255,0.12);padding:6px 10px;border-radius:999px;font-weight:600;margin-bottom:12px}
-    .hero h1{font-size:36px;line-height:1.05;margin-bottom:14px;text-shadow:0 6px 30px rgba(0,0,0,0.45)}
-    .hero p.lead{font-size:16px;opacity:0.95;margin-bottom:18px}
-    .hero .hero-actions{display:flex;gap:12px}
+    /* IMPROVED HERO SECTION */
+    .hero{margin-top:30px;border-radius:24px;overflow:hidden;position:relative;background:#0f2035;box-shadow:0 20px 60px rgba(10,20,40,0.25);padding:60px 40px;min-height:500px;display:flex;align-items:center}
+    
+    /* Hero Background Layer */
+    .hero__bg-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;opacity:0.4;mix-blend-mode:overlay}
+    .hero__overlay-gradient{position:absolute;inset:0;background:linear-gradient(90deg, #0b1a2e 0%, rgba(11,26,46,0.95) 45%, rgba(11,26,46,0.4) 100%);z-index:1}
+
+    /* Hero Grid Layout */
+    .hero__inner{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+
+    /* Text Side */
+    .hero__text{color:#fff}
+    .hero__badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,163,255,0.15);border:1px solid rgba(0,163,255,0.3);padding:6px 14px;border-radius:100px;color:#4dc4ff;font-weight:600;font-size:13px;margin-bottom:20px;backdrop-filter:blur(4px)}
+    .hero__badge span{height:6px;width:6px;background:#4dc4ff;border-radius:50%;box-shadow:0 0 8px #4dc4ff}
+    
+    .hero h1{font-size:42px;line-height:1.15;margin-bottom:20px;font-weight:700;letter-spacing:-0.5px}
+    .hero h1 span.gradient-text{background:linear-gradient(90deg, #6ecfff, #ffffff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    
+    .hero p.lead{font-size:17px;color:#aabacf;margin-bottom:32px;max-width:540px;line-height:1.7}
+    .hero-actions{display:flex;gap:16px}
+
+    /* Image Side */
+    .hero__visual{display:flex;justify-content:center;position:relative}
+    .hero__visual img{width:100%;max-width:450px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));animation:float 6s ease-in-out infinite;border-radius:20px}
+    
+    /* Glowing orb effect behind image */
+    .hero__visual::after{content:'';position:absolute;width:300px;height:300px;background:#00a3ff;filter:blur(80px);opacity:0.25;z-index:-1;top:50%;left:50%;transform:translate(-50%,-50%)}
+
+    @keyframes float{
+        0%{transform:translateY(0px)}
+        50%{transform:translateY(-20px)}
+        100%{transform:translateY(0px)}
+    }
 
     /* Smooth reveal animation */
     .reveal{opacity:0;transform:translateY(8px);animation:reveal .8s forwards;animation-delay:.15s}
@@ -48,68 +76,77 @@
 
     /* Sections */
     section{padding:64px 0}
-    h2{font-size:28px;color:#072136;text-align:center;margin-bottom:30px}
+    h2{font-size:32px;color:#072136;text-align:center;margin-bottom:40px;font-weight:700}
 
     /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.72));border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(10,20,40,0.06);transition:transform .32s,box-shadow .32s}
-    .card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(3,60,120,0.12)}
-    .product-media{height:180px;border-radius:12px;overflow:hidden;margin-bottom:12px;background:#f2f7fb;display:flex;align-items:center;justify-content:center}
-    .product-media img{width:100%;height:100%;object-fit:cover}
-    .card h3{font-size:18px;margin-bottom:8px}
-    .card p{color:#415a6b;font-size:14px}
-    /* Glow hover */
-    .card::after{content:'';position:absolute;pointer-events:none;left:0;right:0;bottom:0;height:40%;filter:blur(36px);opacity:0;transition:opacity .32s}
-    .card:hover::after{opacity:1}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+    .card{background:#fff;border-radius:18px;padding:20px;border:1px solid rgba(255,255,255,0.6);box-shadow:0 10px 30px rgba(10,20,40,0.04);transition:transform .32s,box-shadow .32s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(3,60,120,0.1)}
+    .product-media{height:200px;border-radius:14px;overflow:hidden;margin-bottom:16px;background:#f2f7fb;display:flex;align-items:center;justify-content:center}
+    .product-media img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+    .card:hover .product-media img{transform:scale(1.05)}
+    .card h3{font-size:20px;margin-bottom:8px;color:#0b2545}
+    .card p{color:#556b7a;font-size:14px;line-height:1.6}
 
     /* Info boxes - glassmorphism */
-    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-    .info{background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.35));backdrop-filter:blur(6px);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 8px 28px rgba(10,20,40,0.06)}
-    .info svg{width:48px;height:48px;flex-shrink:0}
-    .info h4{margin-bottom:6px}
-    .about-box{background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5));backdrop-filter:blur(6px);padding:22px;border-radius:16px;box-shadow:0 12px 30px rgba(10,20,40,0.06)}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .info{background:#fff;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 8px 24px rgba(10,20,40,0.04);border:1px solid rgba(0,0,0,0.03)}
+    .info svg{width:42px;height:42px;flex-shrink:0}
+    .info h4{margin-bottom:6px;font-size:18px;color:#0b2545}
+    .info p{font-size:14px;color:#556b7a}
+
+    .about-box{background:#fff;padding:40px;border-radius:20px;box-shadow:0 12px 40px rgba(10,20,40,0.06);border:1px solid rgba(0,0,0,0.03)}
 
     /* Services */
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .service{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#f6fbff);box-shadow:0 10px 24px rgba(10,20,40,0.04)}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .service{padding:24px;border-radius:16px;background:#fff;box-shadow:0 10px 24px rgba(10,20,40,0.03);text-align:center;transition:transform 0.3s}
+    .service:hover{transform:translateY(-5px)}
+    .service h4{margin-bottom:8px;color:#0077cc}
+    .service p{font-size:14px;color:#556b7a}
 
     /* Certifications / Testimonials */
-    .cert-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-    .cert{padding:10px 14px;border-radius:10px;background:#fff;border:1px solid rgba(6,23,40,0.04);font-weight:600}
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .testimonial{padding:16px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 10px 30px rgba(10,20,40,0.04)}
-    .testimonial p{font-size:14px;color:#364f60}
-    .testimonial .meta{margin-top:10px;font-weight:700;color:#0b2545}
+    .cert-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    .cert{padding:12px 20px;border-radius:50px;background:#fff;border:1px solid #e0e6ed;font-weight:600;color:#354a5f;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.02)}
+    
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .testimonial{padding:24px;border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(10,20,40,0.04);position:relative}
+    .testimonial::before{content:'"';font-size:60px;position:absolute;top:10px;left:20px;color:#f0f4f8;font-family:serif;z-index:0}
+    .testimonial p{font-size:15px;color:#364f60;position:relative;z-index:1;font-style:italic}
+    .testimonial .meta{margin-top:14px;font-weight:700;color:#0b2545;font-size:14px;position:relative;z-index:1}
 
-    /* Footer 3-col */
-    footer{background:#071726;color:#cfe8ff;padding:36px 0;margin-top:18px}
-    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
-    .socials a{display:inline-block;margin-right:10px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);color:#cfe8ff}
+    /* Footer */
+    footer{background:#0b1a2e;color:#cfe8ff;padding:60px 0 30px;margin-top:40px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px}
+    .socials a{display:inline-block;margin-right:12px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.08);color:#fff;text-decoration:none;font-size:14px;transition:background 0.2s}
+    .socials a:hover{background:rgba(255,255,255,0.2)}
+    footer a{color:#8fbce6;text-decoration:none;line-height:2}
+    footer a:hover{color:#fff}
 
-    /* Responsive header nav animation */
+    /* Responsive */
     @media(max-width:900px){
       nav.desktop{display:none}
       .hamburger{display:block}
+      .hero__inner{grid-template-columns:1fr;text-align:center}
+      .hero__visual{margin-top:40px;order:-1}
+      .hero__visual img{max-width:320px}
+      .hero p.lead{margin:0 auto 30px}
+      .hero-actions{justify-content:center}
+      .hero__visual::after{display:none} /* Hide glow on mobile for performance */
     }
 
     /* Mobile menu */
-    .mobile-menu{position:fixed;right:16px;top:76px;background:rgba(255,255,255,0.98);backdrop-filter:blur(6px);padding:14px;border-radius:12px;box-shadow:0 14px 40px rgba(10,20,40,0.12);display:none;flex-direction:column;gap:12px}
-    .mobile-menu a{font-weight:700;color:#0b2545}
+    .mobile-menu{position:fixed;right:16px;top:76px;width:200px;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);padding:16px;border-radius:16px;box-shadow:0 20px 60px rgba(10,20,40,0.15);display:none;flex-direction:column;gap:12px;z-index:1100}
+    .mobile-menu a{font-weight:600;color:#0b2545;text-decoration:none}
     .mobile-menu.show{display:flex}
 
     /* Tablet tweaks */
     @media(max-width:720px){
-      .hero__content{left:22px;right:22px}
-      .hero h1{font-size:26px}
-      .hero__bg{height:360px}
-    }
-    @media(max-width:420px){
-      .hero__bg{height:320px}
+      .hero h1{font-size:32px}
+      .container{width:90%}
       .logo .title{font-size:14px}
       .logo img{height:40px;width:40px}
     }
 
-    /* subtle micro interactions */
     a.focus-ring:focus{outline:3px solid rgba(0,119,204,0.18);outline-offset:4px}
   </style>
 </head>
@@ -119,7 +156,7 @@
     <header class="reveal">
       <div class="logo">
         <img src="img/logo.png" alt="logo">
-        <div class="title">MANCRAFT LIFE STYLE<br><span style="font-size:12px;font-weight:500;color:#35506a">Private Limited</span></div>
+        <div class="title">MANCRAFT LIFESTYLE<br><span style="font-size:11px;font-weight:500;color:#556b7a;text-transform:uppercase;letter-spacing:1px">Private Limited</span></div>
       </div>
 
       <nav class="desktop">
@@ -128,7 +165,7 @@
         <a href="#about" class="focus-ring">About Us</a>
         <a href="#certifications" class="focus-ring">Certifications</a>
         <a href="#contact" class="focus-ring">Contact</a>
-        <button class="btn-primary">Register Product</button>
+        <a href="#register" class="btn-primary" style="padding:10px 18px;box-shadow:none">Register Product</a>
       </nav>
 
       <button class="hamburger" aria-label="Open menu" id="hamburger">
@@ -146,79 +183,81 @@
       </div>
     </header>
 
-    <!-- HERO -->
     <section class="hero reveal" aria-label="Hero">
-<div class="product-media"><img src="img/hero.jpg"</div>
-      <div class="hero__bg"></div>
-      <div class="hero__overlay"></div>
-      <div class="hero__content">
-              <div class="hero__kicker">Trusted Medical Equipment</div>
-        <h1>Precision instruments. Reliable care.<br><span style="font-weight:500;color:#bfe6ff;font-size:22px">Solutions for diagnostic labs & hospitals</span></h1>
-        <p class="lead">We provide authorized distribution, certified support and tailored installation for leading medical diagnostic equipment across the region.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary focus-ring">Request Service</a>
-          <a href="#products" style="background:transparent;border-radius:12px;padding:10px 12px;font-weight:700;color:#dff3ff;border:1px solid rgba(255,255,255,0.12)">View Products</a>
+      <div class="hero__bg-img"></div>
+      <div class="hero__overlay-gradient"></div>
+      
+      <div class="hero__inner">
+        <div class="hero__text">
+          <div class="hero__badge">
+            <span></span> Authorized Medical Distributor
+          </div>
+          <h1>Precision Instruments.<br><span class="gradient-text">Reliable Care.</span></h1>
+          <p class="lead">Providing certified distribution, expert installation, and tailored support for diagnostic labs & hospitals. We bridge the gap between technology and patient care.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary focus-ring">Request Service</a>
+            <a href="#products" class="btn-secondary focus-ring">View Products</a>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+           <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=600&q=80" alt="Advanced Medical Equipment" style="border-radius:20px; object-fit:cover; height:350px;">
         </div>
       </div>
     </section>
 
-    <!-- PRODUCTS -->
     <section id="products">
-      <h2>Our Products</h2>
+      <h2>Featured Equipment</h2>
       <div class="gallery">
         <article class="card" aria-labelledby="p1">
-          <div class="product-media"><img src="img/img-01.jpg" alt="Cobas C311"></div>
+          <div class="product-media"><img src="img/img-01.jpg" alt="Cobas C311" onerror="this.src='https://images.unsplash.com/photo-1631557007774-6330ce4ce32b?auto=format&fit=crop&w=800&q=80'"></div>
           <h3 id="p1">Cobas C311</h3>
-          <p>High-performance automated clinical chemistry analyzer for medium to high-throughput labs. Quick, accurate biochemical testing with automated workflow.</p>
+          <p>High-performance automated clinical chemistry analyzer for medium to high-throughput labs. Automated workflow ensures precision.</p>
         </article>
 
         <article class="card" aria-labelledby="p2">
-          <div class="product-media"><img src="img/img-02.jpg" alt="Cobas E411"></div>
+          <div class="product-media"><img src="img/img-02.jpg" alt="Cobas E411" onerror="this.src='https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80'"></div>
           <h3 id="p2">Cobas E411</h3>
-          <p>Advanced immunoassay analyzer using ECL technology for hormones, cardiac markers and infectious-disease biomarkers.</p>
+          <p>Advanced immunoassay analyzer using ECL technology for hormones, cardiac markers, and infectious-disease biomarkers.</p>
         </article>
 
         <article class="card" aria-labelledby="p3">
-          <div class="product-media"><img src="img/img-03.jpg" alt="Samsung V8"></div>
+          <div class="product-media"><img src="img/img-03.jpg" alt="Samsung V8" onerror="this.src='https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'"></div>
           <h3 id="p3">Samsung V8</h3>
-          <p>Premium ultrasound system with AI-powered diagnostics for superior imaging and clinical accuracy.</p>
+          <p>Premium ultrasound system with AI-powered diagnostics for superior imaging, clarity, and clinical accuracy.</p>
         </article>
       </div>
     </section>
 
-    <!-- SERVICES & INFO BOXES -->
     <section id="services">
-      <h2>Our Services</h2>
+      <h2>Why Choose Mancraft?</h2>
       <div class="info-grid container">
         <div class="info">
-          <!-- Warranty SVG -->
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L7 5v6c0 4.97 3.58 9.74 5 11 1.42-1.26 5-6.03 5-11V5l-5-3z" fill="#0077cc" opacity="0.12"/><path d="M12 2L7 5v6c0 4.97 3.58 9.74 5 11 1.42-1.26 5-6.03 5-11V5l-5-3z" stroke="#0077cc" stroke-width="1.2" stroke-linejoin="round"/><path d="M9.5 11.5l1.5 1.5 3.5-3.5" stroke="#0077cc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
-            <h4>Warranty</h4>
-            <p>Register your product online to activate warranty and access extended coverage options.</p>
+            <h4>Extended Warranty</h4>
+            <p>Register your product online to activate warranty and access extended coverage options for peace of mind.</p>
           </div>
         </div>
 
         <div class="info">
-          <!-- Support SVG -->
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="8" r="3" fill="#00a3ff" opacity="0.12"/><path d="M12 11c-4 0-8 1.8-8 6v1h16v-1c0-4.2-4-6-8-6z" stroke="#00a3ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
-            <h4>Face-to-Face Support</h4>
-            <p>Certified on-site service centers and field engineers for installations and repairs.</p>
+            <h4>On-Site Support</h4>
+            <p>Certified on-site service centers and field engineers for fast installations, repairs, and troubleshooting.</p>
           </div>
         </div>
 
         <div class="info">
-          <!-- News SVG -->
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="#0db27b" opacity="0.12"/><path d="M7 9h10M7 13h6" stroke="#0db27b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 7v10" stroke="#0db27b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
-            <h4>News & Alerts</h4>
-            <p>Stay updated with product launches, offers and maintenance advisories.</p>
+            <h4>Real-time Updates</h4>
+            <p>Stay updated with product launches, exclusive offers, and critical maintenance advisories.</p>
           </div>
         </div>
       </div>
 
-      <div style="height:20px"></div>
+      <div style="height:40px"></div>
 
       <div class="services container">
         <div class="service">
@@ -227,102 +266,109 @@
         </div>
         <div class="service">
           <h4>Preventive Maintenance</h4>
-          <p>Scheduled maintenance to maximize uptime and extend equipment life.</p>
+          <p>Scheduled maintenance programs to maximize uptime and extend valuable equipment life.</p>
         </div>
         <div class="service">
           <h4>Spare Parts & Calibration</h4>
-          <p>Genuine spare parts and accredited calibration services for accuracy and safety.</p>
+          <p>100% genuine spare parts and accredited calibration services for total accuracy.</p>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
+    <section id="about" style="background:transparent">
       <h2>About Mancraft Lifestyle</h2>
       <div class="about-box container">
-        <p style="margin-bottom:12px">Mancraft Lifestyle Pvt. Ltd. is an authorized representative and distributor of leading medical equipment manufacturers. We supply diagnostic instruments, provide certified installation, and maintain a robust support network to ensure clinical accuracy and operational uptime for hospitals and diagnostic laboratories.</p>
-        <p style="color:#435a6b"><strong>Our mission:</strong> Deliver reliable, high-quality medical equipment and responsive service so healthcare providers can focus on patient care.</p>
+        <p style="margin-bottom:16px; font-size:16px; line-height:1.8">Mancraft Lifestyle Pvt. Ltd. is an authorized representative and distributor of leading medical equipment manufacturers. We supply diagnostic instruments, provide certified installation, and maintain a robust support network to ensure clinical accuracy and operational uptime for hospitals and diagnostic laboratories.</p>
+        <p style="color:#0077cc; font-weight:500; font-size:18px">Our mission: Deliver reliable, high-quality medical equipment and responsive service so healthcare providers can focus on patient care.</p>
       </div>
     </section>
 
-    <!-- CERTIFICATIONS -->
     <section id="certifications">
       <h2>Certifications & Partners</h2>
       <div class="cert-grid container">
-        <div class="cert">ISO 13485</div>
-        <div class="cert">CE Certified</div>
+        <div class="cert">ISO 13485 Certified</div>
+        <div class="cert">CE Compliant</div>
         <div class="cert">Authorized Distributor</div>
-        <div class="cert">Service Network</div>
+        <div class="cert">Pan-India Service Network</div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
     <section id="testimonials">
-      <h2>What Our Clients Say</h2>
+      <h2>Client Feedback</h2>
       <div class="testimonials container">
         <div class="testimonial">
           <p>"Mancraft installed our Cobas analyzer quickly and trained our staff thoroughly. Excellent after-sales support."</p>
           <div class="meta">Dr. D. Roy — Lab Director</div>
         </div>
         <div class="testimonial">
-          <p>"Fast response time for service calls and genuine spare parts. Highly recommended."</p>
+          <p>"Fast response time for service calls and genuine spare parts. Highly recommended for any diagnostic center."</p>
           <div class="meta">Dr. J. Chattopadhyay — Procurement</div>
         </div>
+        <div class="testimonial">
+            <p>"Professional team with deep technical knowledge. They made the installation process seamless."</p>
+            <div class="meta">Dr. S. Banerji — Hospital Admin</div>
+          </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <h2>Contact Us</h2>
-      <div class="about-box container" style="display:flex;flex-direction:column;gap:10px">
+      <div class="about-box container" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:30px;">
         <div>
-          <strong>Registered Office Address:</strong><br>16/1A, Abdul Hamid Street, 3rd Floor, Room No. 3F, Kolkata - 700069, West Bengal, India
+          <strong style="color:#0077cc; display:block; margin-bottom:8px">Registered Office</strong>
+          16/1A, Abdul Hamid Street, 3rd Floor, Room No. 3F, Kolkata - 700069, West Bengal, India
         </div>
         <div>
-          <strong>Branches:</strong><br> 1. B-405, Manav Kalyan CHSL, New Link Road, Goregaon West, Mumbai - 400104, Maharastra, India<br>2. Flat No. 240, Radient Shine Appt., Begur, Bangalore - 560076, Karnataka, India.<br>3. 11 17th St. Umm Ramool - Dubai, United Arab Emirates
+          <strong style="color:#0077cc; display:block; margin-bottom:8px">Regional Branches</strong>
+          <ul style="list-style:none; padding:0; font-size:14px; color:#556b7a">
+             <li style="margin-bottom:6px">📍 Mumbai: B-405, Manav Kalyan CHSL, New Link Road, Goregaon West, Mumbai - 400104, Maharastra, India</li>
+             <li style="margin-bottom:6px">📍 Bangalore: Flat No. 240, Radient Shine Appt., Begur, Bangalore - 560076, Karnataka, India.</li>
+             <li style="margin-bottom:6px">📍 Dubai: 11 17th St. Umm Ramool - Dubai, United Arab Emirates</li>
+          </ul>
         </div>
         <div>
-          <strong>Phone:</strong><br>+91 98313 92276 | +91 87773 52914
-        </div>
-        <div>
-          <strong>Email:</strong><br>central.mancraftlifestyle@gmail.com
-        </div>
-        <div>
-          <strong>Website:</strong><br>www.mancraftlifestyle.co.in
+          <strong style="color:#0077cc; display:block; margin-bottom:8px">Get in Touch</strong>
+          <div style="margin-bottom:6px">📞 +91 98313 92276 / +91 87773 52914</div>
+          <div style="margin-bottom:6px">✉️ central.mancraftlifestyle@gmail.com</div>
+          <div>🌐 www.mancraftlifestyle.co.in</div>
         </div>
       </div>
     </section>
 
   </div>
 
-<!-- Compact centered Google Map -->
-<section style="padding:40px 0;display:flex;justify-content:center">
-<div style="width:100%;max-width:900px;height:260px;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(10,20,40,.15)">
-<iframe style="width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-src="https://www.google.com/maps?q=16/1A%20Abdul%20Hamid%20Street%20Kolkata%20700069&output=embed"></iframe>
-</div>
-</section>
+  <section style="padding:0 0 60px; display:flex; justify-content:center">
+    <div class="container" style="height:350px; border-radius:20px; overflow:hidden; box-shadow:0 12px 30px rgba(10,20,40,.15); position:relative">
+      <iframe style="width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.2) opacity(0.8);" loading="lazy" src="https://maps.google.com/maps?q=16/1A%20Abdul%20Hamid%20Street%20Kolkata&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+      <div style="position:absolute; top:20px; left:20px; background:white; padding:10px 16px; border-radius:8px; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,0.2)">Headquarters</div>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-grid">
       <div>
-        <h4 style="margin-bottom:10px">Mancraft Lifestyle</h4>
-        <p style="margin-bottom:8px">Authorized distributor of leading medical equipment with certified local service.</p>
-        <div class="socials"><a href="#">Facebook</a> <a href="#">LinkedIn</a> <a href="#">Instagram</a></div>
+        <h4 style="margin-bottom:16px; color:#fff">Mancraft Lifestyle</h4>
+        <p style="margin-bottom:16px; opacity:0.7; font-size:14px">Authorized distributor of leading medical equipment with certified local service.</p>
+        <div class="socials">
+            <a href="#">FB</a> 
+            <a href="#">IN</a> 
+            <a href="#">IG</a>
+        </div>
       </div>
 
       <div>
-        <h4 style="margin-bottom:10px">Quick Links</h4>
-        <p><a href="#products">Products</a><br><a href="#services">Services</a><br><a href="#certifications">Certifications</a></p>
+        <h4 style="margin-bottom:16px; color:#fff">Quick Links</h4>
+        <p><a href="#products">Our Products</a><br><a href="#services">Services</a><br><a href="#certifications">Certifications</a></p>
       </div>
 
       <div>
-        <h4 style="margin-bottom:10px">Support</h4>
-        <p>Email: central.mancraftlifestyle@gmail.com<br>Phone: +91 98313 92276</p>
+        <h4 style="margin-bottom:16px; color:#fff">Support</h4>
+        <p style="opacity:0.8; font-size:14px">central.mancraftlifestyle@gmail.com<br>+91 98313 92276</p>
       </div>
     </div>
-    <div style="text-align:center;margin-top:18px;color:rgba(255,255,255,0.6)">© 2025 Mancraft Lifestyle. All Rights Reserved.</div>
+    <div style="text-align:center; margin-top:40px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:13px; color:rgba(255,255,255,0.4)">
+      © 2025 Mancraft Lifestyle Pvt. Ltd. All Rights Reserved.
+    </div>
   </footer>
 
   <script>
