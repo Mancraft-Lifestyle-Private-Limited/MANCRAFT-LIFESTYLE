@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | Mancraft Lifestyle Pvt. Ltd.</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0b2545;
+  --accent:#0a66c2;
+  --bg:#f4f7fb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:#243447;
+}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+/* Header */
+header{
+  background:#fff;
+  padding:16px 22px;
+  border-radius:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  margin-bottom:30px;
+}
+
+/* Controls */
+.controls{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+.controls input, .controls select{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #dbe3ec;
+  font-size:14px;
+  width:220px;
+}
+
+/* Product Card */
+.product{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 20px 50px rgba(0,50,120,.08);
+  margin-bottom:25px;
+  overflow:hidden;
+  transition:.4s;
+}
+.product:hover{transform:translateY(-4px)}
+
+.product-main{
+  display:flex;
+  gap:24px;
+  padding:24px;
+  cursor:pointer;
+}
+.product img{
+  width:280px;
+  border-radius:16px;
+  transition:transform .4s;
+}
+.product:hover img{transform:scale(1.05)}
+
+.info h2{color:var(--primary)}
+.meta{font-size:14px;color:#5c6f82;margin:6px 0}
+.rating{color:#f4b400}
+
+/* Expand */
+.expand{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .6s ease;
+  padding:0 24px;
+}
+.product.active .expand{
+  max-height:900px;
+  padding-bottom:24px;
+}
+
+/* Gallery */
+.gallery{
+  display:flex;
+  gap:10px;
+  margin:15px 0;
+}
+.gallery img{
+  width:90px;height:65px;
+  border-radius:10px;
+  object-fit:cover;
+  transition:.3s;
+}
+.gallery img:hover{transform:scale(1.1)}
+
+/* Actions */
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.actions a{
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:14px;
+  text-decoration:none;
+  color:#fff;
+}
+.enquiry{background:var(--accent)}
+.whatsapp{background:#25d366}
+.brochure{background:#5c6f82}
+
+/* Mobile */
+@media(max-width:900px){
+  .product-main{flex-direction:column}
+  .product img{width:100%}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <strong>Mancraft Lifestyle – Product Portfolio</strong>
+  <a href="index.html">Home</a>
+</header>
+
+<!-- SEARCH & FILTER -->
+<div class="controls">
+  <input type="text" id="search" placeholder="Search product...">
+  <select id="category">
+    <option value="all">All Categories</option>
+    <option value="diagnostics">Diagnostics</option>
+    <option value="imaging">Imaging</option>
+    <option value="lab">Laboratory</option>
+    <option value="ultrasound">Ultrasound</option>
+  </select>
+</div>
+
+<!-- PRODUCT -->
+<div class="product" data-category="diagnostics">
+  <div class="product-main">
+    <img src="img/img-01.jpg">
+    <div class="info">
+      <h2>Cobas C311</h2>
+      <div class="meta">Germany · Diagnostics</div>
+      <div class="rating">★★★★★ 4.8</div>
+      <p>Automated clinical chemistry analyzer for high-throughput labs.</p>
+    </div>
+  </div>
+
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/img-01.jpg">
+      <img src="img/img-01.jpg">
+    </div>
+
+    <ul>
+      <li>300 tests/hour</li>
+      <li>Touchscreen UI</li>
+      <li>Auto QC</li>
+    </ul>
+
+    <div class="actions">
+      <a class="enquiry" href="product-detail.html?id=c311">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/cobas-c311.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<script>
+document.querySelectorAll('.product-main').forEach(card=>{
+  card.onclick=()=>card.parentElement.classList.toggle('active');
+});
+
+document.getElementById('search').oninput=e=>{
+  document.querySelectorAll('.product').forEach(p=>{
+    p.style.display=p.innerText.toLowerCase().includes(e.target.value.toLowerCase())?'':'none';
+  });
+};
+
+document.getElementById('category').onchange=e=>{
+  document.querySelectorAll('.product').forEach(p=>{
+    p.style.display=(e.target.value==='all'||p.dataset.category===e.target.value)?'':'none';
+  });
+};
+</script>
+
+</body>
+</html>
