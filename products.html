@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products | Mancraft Lifestyle Pvt. Ltd.</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -13,46 +14,132 @@
   --bg:#f4f7fb;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:var(--bg);color:#243447}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:#243447;
+}
 .container{max-width:1200px;margin:auto;padding:20px}
-header{background:#fff;padding:16px 22px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.05);margin-bottom:25px}
-.controls{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:25px}
-.controls input,.controls select{padding:12px 14px;border-radius:10px;border:1px solid #dbe3ec;font-size:14px;width:220px}
 
-.product{background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(0,50,120,.08);margin-bottom:25px;overflow:hidden}
-.product-main{display:flex;gap:24px;padding:24px;cursor:pointer}
-.product img{width:260px;border-radius:16px;object-fit:cover}
+/* Header */
+header{
+  background:#fff;
+  padding:16px 22px;
+  border-radius:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  margin-bottom:30px;
+}
+
+/* Controls */
+.controls{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+.controls input, .controls select{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #dbe3ec;
+  font-size:14px;
+  width:220px;
+}
+
+/* Product Card */
+.product{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 20px 50px rgba(0,50,120,.08);
+  margin-bottom:25px;
+  overflow:hidden;
+  transition:.4s;
+}
+.product:hover{transform:translateY(-4px)}
+
+.product-main{
+  display:flex;
+  gap:24px;
+  padding:24px;
+  cursor:pointer;
+}
+.product img{
+  width:280px;
+  border-radius:16px;
+  transition:transform .4s;
+}
+.product:hover img{transform:scale(1.05)}
+
 .info h2{color:var(--primary)}
 .meta{font-size:14px;color:#5c6f82;margin:6px 0}
-.expand{display:none;padding:0 24px 24px}
-.product.active .expand{display:block}
+.rating{color:#f4b400}
 
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:15px}
-.actions a,.actions button{padding:10px 14px;border-radius:10px;font-size:14px;text-decoration:none;color:#fff;border:none;cursor:pointer}
+/* Expand */
+.expand{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .6s ease;
+  padding:0 24px;
+}
+.product.active .expand{
+  max-height:900px;
+  padding-bottom:24px;
+}
+
+/* Gallery */
+.gallery{
+  display:flex;
+  gap:10px;
+  margin:15px 0;
+}
+.gallery img{
+  width:90px;height:65px;
+  border-radius:10px;
+  object-fit:cover;
+  transition:.3s;
+}
+.gallery img:hover{transform:scale(1.1)}
+
+/* Actions */
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.actions a{
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:14px;
+  text-decoration:none;
+  color:#fff;
+}
 .enquiry{background:var(--accent)}
 .whatsapp{background:#25d366}
-.delete{background:#c62828}
-.edit{background:#6a1b9a}
+.brochure{background:#5c6f82}
 
-@media(max-width:900px){.product-main{flex-direction:column}.product img{width:100%}}
-
-/* ADMIN PANEL */
-#adminPanel{display:none;background:#fff;padding:25px;border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.1);margin-bottom:30px}
-#adminPanel h3{margin-bottom:15px}
-#adminPanel input,#adminPanel select{width:100%;padding:12px;margin-bottom:12px;border-radius:10px;border:1px solid #dbe3ec}
-#adminPanel button{padding:12px 16px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:14px;cursor:pointer}
+/* Mobile */
+@media(max-width:900px){
+  .product-main{flex-direction:column}
+  .product img{width:100%}
+}
 </style>
 </head>
+
 <body>
 <div class="container">
+
 <header>
   <strong>Mancraft Lifestyle – Product Portfolio</strong>
   <a href="index.html">Home</a>
 </header>
 
+<!-- SEARCH & FILTER -->
 <div class="controls">
-  <input type="text" id="search" placeholder="Search product…">
-  <select id="categoryFilter">
+  <input type="text" id="search" placeholder="Search product...">
+  <select id="category">
     <option value="all">All Categories</option>
     <option value="diagnostics">Diagnostics</option>
     <option value="imaging">Imaging</option>
@@ -61,123 +148,259 @@ header{background:#fff;padding:16px 22px;border-radius:14px;display:flex;justify
   </select>
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel">
-  <h3>Admin – Add / Edit Product</h3>
-  <input id="pName" placeholder="Product Name">
-  <input id="pDesc" placeholder="Short Description">
-  <select id="pCat">
-    <option value="diagnostics">Diagnostics</option>
-    <option value="imaging">Imaging</option>
-    <option value="lab">Laboratory</option>
-    <option value="ultrasound">Ultrasound</option>
-  </select>
-  <input type="file" id="pImage" accept="image/*">
-  <button onclick="saveProduct()">Save Product</button>
+<!-- PRODUCTS -->
+
+<!-- Cobas C311 -->
+<div class="product" data-category="diagnostics">
+  <div class="product-main">
+    <img src="img/img-01.jpg">
+    <div class="info">
+      <h2>Cobas C311</h2>
+      <div class="meta">Germany · Diagnostics</div>
+      <div class="rating">★★★★★ 4.8</div>
+      <p>Automated clinical chemistry analyzer for high-throughput labs.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/c311-1.jpg">
+      <img src="img/c311-2.jpg">
+    </div>
+    <ul>
+      <li>300 tests/hour</li>
+      <li>Touchscreen UI</li>
+      <li>Auto QC</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="c311.html?id=c311">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/cobas-c311.pdf" download>Brochure</a>
+    </div>
+  </div>
 </div>
 
-<div id="productList"></div>
+<!-- Cobas E411 -->
+<div class="product" data-category="diagnostics">
+  <div class="product-main">
+    <img src="img/img-02.jpg">
+    <div class="info">
+      <h2>Cobas E411</h2>
+      <div class="meta">Germany · Diagnostics</div>
+      <div class="rating">★★★★★ 4.7</div>
+      <p>Immunoassay analyzer for routine clinical testing.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/e411-1.jpg">
+      <img src="img/e411-2.jpg">
+    </div>
+    <ul>
+      <li>Electrochemiluminescence detection</li>
+      <li>High throughput</li>
+      <li>Compact design</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="e411.html?id=e411">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/cobas-e411.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+<!-- Samsung V8 -->
+<div class="product" data-category="ultrasound">
+  <div class="product-main">
+    <img src="img/img-03.jpg">
+    <div class="info">
+      <h2>Samsung V8</h2>
+      <div class="meta">Korea · Imaging</div>
+      <div class="rating">★★★★★ 4.6</div>
+      <p>High-resolution ultrasound imaging system.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/samsung-v8-1.jpg">
+      <img src="img/samsung-v8-2.jpg">
+    </div>
+    <ul>
+      <li>Advanced imaging modes</li>
+      <li>User-friendly interface</li>
+      <li>Portable design</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="samsung-v8.html?id=samsung-v8">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/samsung-v8.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+<!-- D10 HBA1C Analyzer -->
+<div class="product" data-category="lab">
+  <div class="product-main">
+    <img src="img/D-10.png">
+    <div class="info">
+      <h2>D10 HBA1C Analyzer</h2>
+      <div class="meta">USA · Laboratory</div>
+      <div class="rating">★★★★☆ 4.5</div>
+      <p>Automated HbA1c testing for diabetes monitoring.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/d10-1.jpg">
+      <img src="img/d10-2.jpg">
+    </div>
+    <ul>
+      <li>Fast testing</li>
+      <li>High accuracy</li>
+      <li>Compact footprint</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="d-10.html?id=d10">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/d10-hba1c.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+<!-- Sysmex XQ-320 -->
+<div class="product" data-category="lab">
+  <div class="product-main">
+    <img src="img/XQ-320.PNG">
+    <div class="info">
+      <h2>Sysmex XQ-320</h2>
+      <div class="meta">Japan · Laboratory</div>
+      <div class="rating">★★★★☆ 4.4</div>
+      <p>Automated hematology analyzer for clinical labs.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/xq320-1.jpg">
+      <img src="img/xq320-2.jpg">
+    </div>
+    <ul>
+      <li>24 parameters</li>
+      <li>Compact design</li>
+      <li>Low maintenance</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="xq320.html?id=xq320">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/xq320.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+<!-- Woodpecker Mini Ray Portable X-Ray Machine -->
+<div class="product" data-category="imaging">
+  <div class="product-main">
+    <img src="img/X-Ray.jpeg">
+    <div class="info">
+      <h2>Woodpecker Mini Ray</h2>
+      <div class="meta">China · Imaging</div>
+      <div class="rating">★★★★☆ 4.3</div>
+      <p>Portable X-Ray machine for clinics and dental labs.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/woodpecker-1.jpg">
+      <img src="img/woodpecker-2.jpg">
+    </div>
+    <ul>
+      <li>Lightweight & portable</li>
+      <li>Low radiation dose</li>
+      <li>Rechargeable battery</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="woodpecker.html?id=woodpecker">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/woodpecker.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+<!-- All-in-One Diabetic Foot Lab -->
+<div class="product" data-category="diagnostics">
+  <div class="product-main">
+    <img src="img/DIABETIK MINILAB.jpg">
+    <div class="info">
+      <h2>All-in-One Diabetic Foot Lab</h2>
+      <div class="meta">India · Diagnostics</div>
+      <div class="rating">★★★★☆ 4.6</div>
+      <p>Comprehensive foot lab with ABI, TBI, Doppler, and more.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/diabetic-foot-1.jpg">
+      <img src="img/diabetic-foot-2.jpg">
+    </div>
+    <ul>
+      <li>ABI & TBI measurement</li>
+      <li>Monofilament & vibration tests</li>
+      <li>Foot pressure & temperature scan</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="diabetic-foot.html?id=diabetic-foot">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/diabetic-foot.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
+<!-- Electrolyte Analyzer W/O Starter Kit-9 -->
+<div class="product" data-category="lab">
+  <div class="product-main">
+    <img src="img/Electrolyte Analyzer.png">
+    <div class="info">
+      <h2>Electrolyte Analyzer W/O Starter Kit-9</h2>
+      <div class="meta">India · Laboratory</div>
+      <div class="rating">★★★★☆ 4.2</div>
+      <p>Fast and precise electrolyte measurement without starter kit.</p>
+    </div>
+  </div>
+  <div class="expand">
+    <div class="gallery">
+      <img src="img/electrolyte-1.jpg">
+      <img src="img/electrolyte-2.jpg">
+    </div>
+    <ul>
+      <li>Compact design</li>
+      <li>Rapid results</li>
+      <li>Easy maintenance</li>
+    </ul>
+    <div class="actions">
+      <a class="enquiry" href="electrolyte.html?id=electrolyte">View Details</a>
+      <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
+      <a class="brochure" href="brochures/electrolyte.pdf" download>Brochure</a>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <script>
-/* ================= ADMIN CREDENTIALS ================= */
-const ADMIN_USER = "mancraft_admin";
-const ADMIN_PASS = "ML@2025";
-let editIndex = null;
+document.querySelectorAll('.product-main').forEach(card=>{
+  card.onclick=()=>card.parentElement.classList.toggle('active');
+});
 
-if(location.hash === '#admin'){
-  const u = prompt('Admin User ID');
-  const p = prompt('Admin Password');
-  if(u === ADMIN_USER && p === ADMIN_PASS){
-    adminPanel.style.display = 'block';
-  } else {
-    alert('Access Denied');
-  }
-}
-
-/* ================= PRODUCTS ================= */
-let products = JSON.parse(localStorage.getItem('products')) || [];
-
-function saveStorage(){localStorage.setItem('products', JSON.stringify(products));}
-
-function render(){
-  productList.innerHTML='';
-  products.forEach((p,i)=>{
-    const div=document.createElement('div');
-    div.className='product';
-    div.dataset.category=p.category;
-    div.innerHTML=`
-    <div class="product-main" onclick="this.parentElement.classList.toggle('active')">
-      <img src="${p.image}">
-      <div class="info">
-        <h2>${p.name}</h2>
-        <div class="meta">${p.category}</div>
-        <p>${p.desc}</p>
-      </div>
-    </div>
-    <div class="expand">
-      <div class="actions">
-        <a class="enquiry" href="#">View</a>
-        <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">WhatsApp</a>
-        ${location.hash==='#admin'?`
-        <button class="edit" onclick="editProduct(${i})">Edit</button>
-        <button class="delete" onclick="deleteProduct(${i})">Delete</button>`:''}
-      </div>
-    </div>`;
-    productList.appendChild(div);
-  });
-}
-
-function saveProduct(){
-  const reader = new FileReader();
-  const file = pImage.files[0];
-  reader.onload = () => {
-    const data = {
-      name:pName.value,
-      desc:pDesc.value,
-      category:pCat.value,
-      image: reader.result
-    };
-    if(editIndex!==null){products[editIndex]=data;editIndex=null;}
-    else products.push(data);
-    saveStorage();
-    render();
-    pName.value=pDesc.value='';
-    pImage.value='';
-    alert('Saved');
-  };
-  if(file) reader.readAsDataURL(file);
-}
-
-function deleteProduct(i){
-  if(confirm('Delete this product?')){
-    products.splice(i,1);
-    saveStorage();
-    render();
-  }
-}
-
-function editProduct(i){
-  const p=products[i];
-  pName.value=p.name;
-  pDesc.value=p.desc;
-  pCat.value=p.category;
-  editIndex=i;
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-render();
-
-search.oninput=e=>{
+document.getElementById('search').oninput=e=>{
   document.querySelectorAll('.product').forEach(p=>{
     p.style.display=p.innerText.toLowerCase().includes(e.target.value.toLowerCase())?'':'none';
   });
 };
-categoryFilter.onchange=e=>{
+
+document.getElementById('category').onchange=e=>{
   document.querySelectorAll('.product').forEach(p=>{
     p.style.display=(e.target.value==='all'||p.dataset.category===e.target.value)?'':'none';
   });
 };
 </script>
+
 </body>
 </html>
